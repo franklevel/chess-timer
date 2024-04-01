@@ -65,7 +65,7 @@ export const Timer = ({
           lineHeight: "0px",
         }}
       >
-        {isLost ? "Game Over" : null}
+        {isLost && isGameStarted ? "Game Over" : null}
       </h1>
       <br />
       <span
@@ -78,9 +78,11 @@ export const Timer = ({
         {remainingTime < 0 ? 0 : formatTime(remainingTime)}
       </span>
       <br />
-      <button style={{ fontSize: "30px" }} onClick={onPause}>
-        {isPaused ? "Resume" : "Pause"}
-      </button>
+      {isGameStarted && (
+        <button style={{ fontSize: "30px" }} onClick={onPause}>
+          {isPaused ? "Resume" : "Pause"}
+        </button>
+      )}
     </div>
   );
 };
